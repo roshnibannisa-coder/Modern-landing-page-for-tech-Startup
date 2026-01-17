@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaTech – Innovate Faster</title>
+
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --secondary: #00e5ff;
+      --dark: #0f0f1a;
+      --glass: rgba(255,255,255,0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1b1b3a, #05050f);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      position: relative;
+    }
+
+    nav ul li::after {
+      content: "";
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+
+    nav ul li:hover::after {
+      width: 100%;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 40px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(108,99,255,0.2), transparent 60%);
+      animation: pulse 6s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .hero-content {
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 60px);
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin: 20px 0 35px;
+      color: #cfd2ff;
+      font-size: 18px;
+    }
+
+    .btn {
+      padding: 14px 34px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 0 25px rgba(108,99,255,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 0 40px rgba(0,229,255,0.8);
+    }
+
+    /* ===== FEATURES ===== */
+    section {
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+    }
+
+    .section-title p {
+      color: #b7baff;
+      margin-top: 10px;
+    }
+
+    .features {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 35px rgba(108,99,255,0.5);
+    }
+
+    .feature-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: var(--secondary);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial {
+      background: var(--glass);
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .testimonial:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .testimonial h4 {
+      margin-top: 15px;
+      color: var(--secondary);
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(108,99,255,0.3), rgba(0,229,255,0.25));
+      border-radius: 30px;
+      max-width: 900px;
+      margin: auto;
+      padding: 70px 25px;
+      box-shadow: 0 0 50px rgba(108,99,255,0.4);
+    }
+
+    .cta h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      margin-bottom: 30px;
+      color: #e0e3ff;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #9fa4ff;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo">NovaTech</div>
+      <ul>
+        <li>Home</li>
+        <li>Features</li>
+        <li>Testimonials</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Build the Future with <span>Smart Technology</span></h1>
+      <p>NovaTech helps startups and enterprises innovate faster using AI-powered, cloud-ready solutions.</p>
+      <button class="btn">Get Started</button>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="section-title">
+      <h2>Powerful Features</h2>
+      <p>Designed for performance, security, and scalability</p>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast Performance</h3>
+        <p>Optimized architecture ensures lightning-fast load times.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Secure by Design</h3>
+        <p>Enterprise-grade security with end-to-end encryption.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Cloud Ready</h3>
+        <p>Deploy globally with scalable cloud infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="section-title">
+      <h2>What Our Clients Say</h2>
+      <p>Trusted by innovators worldwide</p>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>“NovaTech transformed our product delivery speed completely.”</p>
+        <h4>— Startup Founder</h4>
+      </div>
+
+      <div class="testimonial">
+        <p>“The UI, performance, and support are simply outstanding.”</p>
+        <h4>— Product Manager</h4>
+      </div>
+
+      <div class="testimonial">
+        <p>“A perfect tech partner for fast-growing companies.”</p>
+        <h4>— CTO</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="cta">
+      <h2>Ready to Launch Your Next Big Idea?</h2>
+      <p>Join thousands of innovators using NovaTech to build smarter solutions.</p>
+      <button class="btn">Start Free Trial</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 NovaTech. All rights reserved.
+  </footer>
+
+</body>
+</html>
